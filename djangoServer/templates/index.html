@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <script src="/static/js/welcome.js"></script>
+    </head>
+
+    <body>
+        <div>
+            <h1>Nothing is Done.</h1>
+        </div>
+        <div>
+            <ol>
+                {% for url in urls %}
+                <li><a href="{{url}}">{{url}}</a></li>
+                {% endfor %}
+            </ol>
+        </div>
+    </body>
+</html>

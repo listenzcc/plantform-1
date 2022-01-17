@@ -16,6 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from . import views
+
 urlpatterns = [
+    path('', views.index),
+    path('index', views.index),
+
+    path('favicon.ico', views.favicon),
+
+    path('animation', views.animation),
+
     path('admin/', admin.site.urls),
 ]
