@@ -1,0 +1,6 @@
+# Python
+__pycache__
+
+# Django
+*.sqlite3
+*.private
