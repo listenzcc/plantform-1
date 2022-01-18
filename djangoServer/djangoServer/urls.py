@@ -26,5 +26,7 @@ urlpatterns = [
 
     path('animation', views.animation),
 
+    path('fullik', views.fullik),
+
     path('admin/', admin.site.urls),
 ]

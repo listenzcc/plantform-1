@@ -12,13 +12,17 @@ faviconUrl = 'http://oa.ia.ac.cn/favicon.ico'
 # --------------------------------------------------------------------------------
 # Handlers
 
+def favicon(request):
+    return redirect(faviconUrl)
+
 
 def index(request):
     context = dict(
         ctime=time.ctime(),
-        urls=[e.pattern
+        urls=['{}'.format(e.pattern)
               for e in get_resolver().url_patterns]
     )
+    print('----', context)
     return render(request, 'index.html', context)
 
 
@@ -29,5 +33,5 @@ def animation(request):
     return render(request, 'animation.html', context)
 
 
-def favicon(request):
-    return redirect(faviconUrl)
+def fullik(request):
+    return render(request, 'fullik.html', {})
