@@ -251,7 +251,7 @@ function mode(str) {
     addDemos(demos[current]);
     addGround();
 
-    load("demo_1");
+    load("demo_0");
 }
 
 function initGui() {
@@ -300,6 +300,8 @@ function updateSolver() {
 
 function autoMove() {
     if (!setting.auto) return;
+
+    console.log(targets);
 
     targetTween = new TWEEN.Tween(goal)
         .to(

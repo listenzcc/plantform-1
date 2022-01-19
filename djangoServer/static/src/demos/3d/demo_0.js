@@ -1,14 +1,19 @@
 tell("Demo 0 - Human bones");
 
-addTarget(new THREE.Vector3(-30, 15, 0));
-addTarget(new THREE.Vector3(30, 15, 0));
-addTarget(new THREE.Vector3(-8, -40, 0));
-addTarget(new THREE.Vector3(8, -40, 0));
+startLoc = new FIK.V3();
 
-const startLoc = new FIK.V3();
+// Head
+
+// Arms
+addTarget(new THREE.Vector3(-10, 2, 0));
+addTarget(new THREE.Vector3(10, 2, 0));
+
+// Legs
+addTarget(new THREE.Vector3(-8, -30, 0));
+addTarget(new THREE.Vector3(8, -30, 0));
 
 // 0 spine
-const addSpine = function () {
+addSpine = function () {
     let angleLimit = 30,
         spineLength = 5,
         spineDirection = FIK.Y_AXE,
@@ -65,7 +70,7 @@ addSpine();
 
 // 1 left arm
 
-const addArm = function (color, armDirection, targetPosition) {
+addArm = function (color, armDirection, targetPosition) {
     // Arm is the 3-rods chain
     // shoulder -> upperArm -> lowerArm -> [hand]
     let smallAngleLimit = 10,
@@ -130,7 +135,7 @@ const addArm = function (color, armDirection, targetPosition) {
 addArm();
 addArm(0x4444ff, FIK.X_AXE, targets[2].position);
 
-const addLeg = function (color, legDirection, targetPosition) {
+addLeg = function (color, legDirection, targetPosition) {
     // Leg is the 3-rods chain
     // hip -> upperLeg -> lowerLeg -> [foot]
     let smallAngleLimit = 10,
@@ -205,45 +210,3 @@ const addLeg = function (color, legDirection, targetPosition) {
 
 addLeg();
 addLeg(0x4444ff, FIK.X_AXE, targets[4].position);
-
-// // 5 left leg
-
-// chain = new FIK.Chain3D();
-// basebone = new FIK.Bone3D(new FIK.V3(0, 0, 0), new FIK.V3(-4, 0, 0));
-// chain.addBone(basebone);
-// chain.addConsecutiveRotorConstrainedBone(FIK.Y_AXE.negated(), 15, 90);
-// chain.addConsecutiveHingedBone(
-//     FIK.Y_AXE.negated(),
-//     15,
-//     "local",
-//     FIK.Y_AXE,
-//     1,
-//     120,
-//     FIK.Z_AXE
-// );
-// //chain.addConsecutiveBone( FIK.Y_AXE.negated(), 15 );
-// //chain.addConsecutiveBone( FIK.Y_AXE.negated(), 15  );
-
-// chain.setRotorBaseboneConstraint("local", FIK.X_NEG, 10);
-// solver.connectChain(chain, 0, 0, "start", targets[3].position, true, 0x44ff44);
-
-// // 5 right leg
-
-// chain = new FIK.Chain3D();
-// basebone = new FIK.Bone3D(new FIK.V3(0, 0, 0), new FIK.V3(4, 0, 0));
-// chain.addBone(basebone);
-// chain.addConsecutiveRotorConstrainedBone(FIK.Y_AXE.negated(), 15, 90 / 10);
-// chain.addConsecutiveHingedBone(
-//     FIK.Y_AXE.negated(),
-//     15,
-//     "local",
-//     FIK.Z_NEG,
-//     1,
-//     120,
-//     FIK.Y_NEG
-// );
-// //chain.addConsecutiveBone( FIK.Y_AXE.negated(), 15 );
-// //chain.addConsecutiveBone( FIK.Y_AXE.negated(), 15  );
-
-// chain.setRotorBaseboneConstraint("local", FIK.X_AXE, 10);
-// solver.connectChain(chain, 0, 0, "start", targets[4].position, true, 0x4444ff);
