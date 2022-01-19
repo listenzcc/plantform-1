@@ -27,7 +27,7 @@ var gui,
     scene,
     camera,
     renderer,
-    controler,
+    controller,
     ambientLight,
     lights,
     mesh,
@@ -75,8 +75,8 @@ function initScene() {
 
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(60, w / h, 0.1, 2000);
-    controler = new THREE.OrbitControls(camera, renderer.domElement);
-    controler.enableKeys = false;
+    controller = new THREE.OrbitControls(camera, renderer.domElement);
+    controller.enableKeys = false;
 
     //
 
@@ -137,7 +137,7 @@ function addGround() {
     if (current === "3D") {
         camera.position.set(0, 30, 100);
         lights[0].position.set(0, 200, 0);
-        controler.update();
+        controller.update();
 
         ground = new THREE.Mesh(
             new THREE.PlaneBufferGeometry(200, 200, 1, 1),
@@ -157,7 +157,7 @@ function addGround() {
     } else {
         camera.position.set(0, 0, 200);
         lights[0].position.set(40, 100, 200);
-        controler.update();
+        controller.update();
 
         ground = new THREE.Mesh(
             new THREE.PlaneBufferGeometry(200, 200, 1, 1),

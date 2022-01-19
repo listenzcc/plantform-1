@@ -22,7 +22,6 @@ def index(request):
         urls=['{}'.format(e.pattern)
               for e in get_resolver().url_patterns]
     )
-    print('----', context)
     return render(request, 'index.html', context)
 
 
