@@ -46,11 +46,11 @@ const initGui = () => {
 
     gui.add("button", { name: "", value: ["Reset"] }).onChange(() => {
         options.autoMoveToggle = true;
-        autoMove(0, true);
-        autoMove(1, true);
+        // autoMove(0, true);
+        // autoMove(1, true);
         autoMove(2, true);
-        autoMove(3, true);
-        autoMove(4, true);
+        // autoMove(3, true);
+        // autoMove(4, true);
         options.autoMoveToggle = false;
     });
 
@@ -58,11 +58,11 @@ const initGui = () => {
         type: "bool",
         h: 40,
     }).onChange(() => {
-        autoMove(0);
-        autoMove(1);
+        // autoMove(0);
+        // autoMove(1);
         autoMove(2);
-        autoMove(3);
-        autoMove(4);
+        // autoMove(3);
+        // autoMove(4);
     });
 
     // gui.add("bool", { name: "autoMove", value: false, p: 70 }).onChange(() => {
@@ -184,7 +184,7 @@ const addTarget = (position) => {
     n.mesh.position.copy(position);
     n.control.addEventListener("change", updateSolver);
     n.control.attach(n.mesh);
-    n.control.setSize(0.75);
+    n.control.setSize(0.75 * 0.4);
     //n.control.setMode('rotate')
     // n.control.setMode("scale");
     scene.add(n.control);
@@ -399,9 +399,9 @@ const autoMove = (i, reset = false) => {
 
     const scale = reset ? 0 : 1.0;
 
-    let x = FIK._Math.randInt(-5, 5) * scale + fixTargetPositions[i].x,
-        y = FIK._Math.randInt(-5, 5) * scale + fixTargetPositions[i].y,
-        z = FIK._Math.randInt(-5, 5) * scale + fixTargetPositions[i].z;
+    let x = FIK._Math.randInt(-5, 15) * scale + fixTargetPositions[i].x,
+        y = FIK._Math.randInt(-5, 15) * scale + fixTargetPositions[i].y,
+        z = FIK._Math.randInt(-5, 15) * scale + fixTargetPositions[i].z;
 
     new TWEEN.Tween(targetPositions[i])
         .to({ x: x, y: y, z: z }, 2000)
